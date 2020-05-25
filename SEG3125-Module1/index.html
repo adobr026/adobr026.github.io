@@ -17,44 +17,63 @@
 			</a>
 		</div>
 		<div class="question">
-			<h2> Personal Information </h2>
-			<p>First name: <input type="text" name="firstname"></p>
-			<p>Last name: <input type="text" name="lastname"></p>
-			<br>
-			<br>
+			<h3> Question 1: What are your first impressions of the site?</h3>
+			<input type="text" class="textquestion"></input>
 		</div>	
 			
 		<div class="question">
-			<h2> What you like </h2>
-			I like:<br>
-			<input type="checkbox" name="Color" value="Red">Red<br>
-			<input type="checkbox" name="Color" value="Green">Green<br>
-			<input type="checkbox" name="Color" value="Blue">Blue<br>
-			
-			<br>
-			
-			What is your favorite fruit?<br>
-			<select id="favorite">
-				<option value="Apples" selected="selected">Apples</option>
-				<option value="Oranges">Oranges</option>
-				<option value="Bananas">Bananas</option>
+			<h3> Question 2: Have you used this site before?</h3>
+			<input type="radio" name="YesNo" value="Yes" class="radio-button">Yes<br>
+			<input type="radio" name="YesNo" value="No" class="radio-button">No<br>
+		</div>
+		
+		<div class="question">
+			<h3> Question 3: How do you feel about the color scheme used by the site</h3>
+			<select id="listQuestion">
+				<option value="Love it" selected="selected">Love It</option>
+				<option value="Like it">Like it</option>
+				<option value="Indifferent">Indifferent</option>
+				<option value="Dislike it">Dislike it</option>
+				<option value="Hate it">Hate it</option>
 			</select>
 		</div>
 		
-		<br>
-		<br>
+		<div class="question">
+			<h3> Question 4: Which music brand(s) are you familiar with?</h3>
+			<input type="checkbox" value="Fender">Fender</input><br>
+			<input type="checkbox" value="Gibson">Gibson</input><br>
+			<input type="checkbox" value="Ibanez">Ibanez</input><br>
+			<input type="checkbox" value="Jackson">Jackson</input><br>
+			<input type="checkbox" value="Schecter">Schecter</input><br>
+			<input type="checkbox" value="PRS">PRS</input><br>
+			<input type="checkbox" value="Tama">Tama</input><br>
+			<input type="checkbox" value="Sabian">Sabian</input><br>
+			<input type="checkbox" value="Zildjian">Zildjian</input>
+		</div>
+		
+		<div class="question">
+			<h3>Is there anything else you want to say about the site?</h3>
+			<textarea rows="5" cols="90"></textarea>
+		</div>
+		
+		<div class="question">
+			<h3>How do you feel about the following statement: This site is very easy to navigate.</h3>
+			<select id="Opinion">
+				<option value="Strongly Agree">Strongly Agree</option>
+				<option value="Somewhat Agree">Somewhat Agree</option>
+				<option value="Neither" selected="selected">Neither agree nor disagree</option>
+				<option value="Somewhat Disagree">Somewhat Disagree</option>
+				<option value="Strongly Disagree">Strongly Disagree</option>
+			</select>
 			
-		Comments:<br>
-		<textarea rows="5" cols="30"></textarea>
-				
-		<br>
-		<br>
-				
-		<button id="submitButton" type="button" class="block">
-			SUBMIT your questionnaire
-		</button>
+		</div>
+		<div class="submitButton">
+			<button id="submitButton" type="button" class="block">
+				SUBMIT
+			</button>
+		</div>
 			
-		<p id="signature">Site created by Caroline Barrière</p>	
+		<p id="signature">Site created by Aayush Dobriyal</p>	
 		
 	</form>
   </body>
