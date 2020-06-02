@@ -25,25 +25,40 @@ function openInfo(evt, tabName) {
 
 	
 // generate a checkbox list from a list of products
-// it makes each product name as the label for the checkbos
+// it makes each product name as the label for the checkbox
 
-function populateListProductChoices(slct1, slct2) {
-    var s1 = document.getElementById(slct1);
+function populateListProductChoices(slct2) {
+	// if the user checked None box (all other options should not be considered (unchecked))
+	if (document.getElementById("None").checked){
+		document.getElementById("Vegetarian").checked = false;
+		document.getElementById("GlutenFree").checked = false;
+		document.getElementById("Organic").checked = false;
+	}
     var s2 = document.getElementById(slct2);
-	
 	// s2 represents the <div> in the Products tab, which shows the product list, so we first set it empty
-    s2.innerHTML = "";
-		
+    s2.innerHTML = "";	
+	
+	// sorts products by price 
+	products.sort(function(a,b){
+		return a.price - b.price;
+	});
+	
 	// obtain a reduced list of products based on restrictions
-    var optionArray = restrictListProducts(products, s1.value);
-
+    var optionArray = restrictListProducts(products);
+	
+	// removes all previous information (so they're arent any duplicates)
+	while(s2.childNodes.length > 0){
+		s2.removeChild(s2.childNodes[0]);
+	}
+	
 	// for each item in the array, create a checkbox element, each containing information such as:
 	// <input type="checkbox" name="product" value="Bread">
 	// <label for="Bread">Bread/label><br>
-		
+
 	for (i = 0; i < optionArray.length; i++) {
 			
-		var productName = optionArray[i];
+		var productName = optionArray[i][0];
+		var productPrice = optionArray[i][1];
 		// create the checkbox and add in HTML DOM
 		var checkbox = document.createElement("input");
 		checkbox.type = "checkbox";
@@ -54,7 +69,7 @@ function populateListProductChoices(slct1, slct2) {
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label')
 		label.htmlFor = productName;
-		label.appendChild(document.createTextNode(productName));
+		label.appendChild(document.createTextNode(productName +": $"+productPrice));
 		s2.appendChild(label);
 		
 		// create a breakline node and add in HTML DOM
