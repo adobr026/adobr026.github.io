@@ -4,7 +4,8 @@
 
 var products = [
 	{
-		name: "brocoli",
+		name: "broccoli",
+		category: "vegetable",
 		vegetarian: true,
 		glutenFree: true,
 		organic: false,
@@ -12,6 +13,7 @@ var products = [
 	},
 	{
 		name: "bread",
+		category: "grain",
 		vegetarian: true,
 		glutenFree: false,
 		organic: false,
@@ -19,6 +21,7 @@ var products = [
 	},
 	{
 		name: "salmon",
+		category: "seafood",
 		vegetarian: false,
 		glutenFree: true,
 		organic: false,
@@ -26,6 +29,7 @@ var products = [
 	},
 	{
 		name: "tuna",
+		category: "seafood",
 		vegetarian: false,
 		glutenFree: true,
 		organic: true,
@@ -33,6 +37,7 @@ var products = [
 	},
 	{
 		name: "oats",
+		category: "grain",
 		vegetarian: true,
 		glutenFree: false,
 		organic: false,
@@ -40,6 +45,7 @@ var products = [
 	},
 	{
 		name: "rice",
+		category: "grain",
 		vegetarian: true,
 		glutenFree: false,
 		organic: true,
@@ -47,6 +53,7 @@ var products = [
 	},
 	{
 		name: "chicken",
+		category: "meat",
 		vegetarian: false,
 		glutenFree: true,
 		organic: false,
@@ -54,6 +61,7 @@ var products = [
 	},
 	{
 		name: "beef",
+		category: "meat",
 		vegetarian: false,
 		glutenFree: true,
 		organic: false,
@@ -61,6 +69,7 @@ var products = [
 	},
 	{
 		name: "apple",
+		category: "fruit",
 		vegetarian: true,
 		glutenFree: true,
 		organic: false,
@@ -68,6 +77,7 @@ var products = [
 	},
 	{
 		name: "orange",
+		category: "fruit",
 		vegetarian: true,
 		glutenFree: true,
 		organic: false,
@@ -75,6 +85,7 @@ var products = [
 	},
 	{
 		name: "ground pork",
+		category: "meat",
 		vegetarian: false,
 		glutenFree: true,
 		organic: true,
@@ -82,11 +93,28 @@ var products = [
 	},
 	{
 		name: "coconut",
+		category: "fruit",
 		vegetarian: true,
 		glutenFree: true,
 		organic: true,
 		price: 6.99
 	},
+	{
+		name: "milk",
+		category: "dairy",
+		vegetarian: true,
+		glutenFree: true,
+		organic: true,
+		price: 5.99
+	},
+	{
+		name: "butter",
+		category: "dairy",
+		vegetarian: true,
+		glutenFree: true,
+		organic: true,
+		price: 4.99
+	}
 ];
 	
 
@@ -100,6 +128,7 @@ function restrictListProducts(prods) {
 	let gluten_restriction = document.getElementById("GlutenFree").checked;
 	let organic_restriction = document.getElementById("Organic").checked;
 	let restrictions = getRestrictions(veg_restriction,gluten_restriction,organic_restriction);
+	
 	for (let i=0; i<prods.length; i+=1) {
 		if (restrictions == "VegGlutenOrganic" && prods[i].vegetarian == true && prods[i].glutenFree == true && prods[i].organic == true){
 			product_names.push([prods[i].name,prods[i].price]);
@@ -139,12 +168,25 @@ function getRestrictions(res1,res2,res3){
   return restrictions;
 }
 
+// Helper function that checks if object can be found in 2d array
+function findInArray(arr, productName){
+	for (let i = 0;i < arr.length; i++){
+		if(arr[i][0] == productName){
+			return 1;
+		}
+	}
+	
+	return -1;
+}
 // Calculate the total price of items, with received parameter being a list of products
 function getTotalPrice(chosenProducts) {
 	totalPrice = 0;
+	
+	index = 0;
 	for (let i=0; i<products.length; i+=1) {
-		if (chosenProducts.indexOf(products[i].name) > -1){
-			totalPrice += products[i].price;
+		if (findInArray(chosenProducts,products[i].name) > -1){
+			totalPrice += products[i].price * chosenProducts[index][1] ;
+			index ++;
 		}
 	}
 	return totalPrice;

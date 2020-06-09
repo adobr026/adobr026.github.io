@@ -2,24 +2,13 @@
 // This function is called when any of the tab is clicked
 // It is adapted from https://www.w3schools.com/howto/howto_js_tabs.asp
 
-function openInfo(evt, tabName) {
-
-	// Get all elements with class="tabcontent" and hide them
-	tabcontent = document.getElementsByClassName("tabcontent");
-	for (i = 0; i < tabcontent.length; i++) {
-		tabcontent[i].style.display = "none";
+function openInfo(evt, accordianName) {
+	// Hides/Shows the content for the relevant 
+	if (document.getElementById(accordianName).style.display == "block"){
+		document.getElementById(accordianName).style.display = "none";
+	}else{
+		document.getElementById(accordianName).style.display = "block";	
 	}
-
-	// Get all elements with class="tablinks" and remove the class "active"
-	tablinks = document.getElementsByClassName("tablinks");
-	for (i = 0; i < tablinks.length; i++) {
-		tablinks[i].className = tablinks[i].className.replace(" active", "");
-	}
-
-	// Show the current tab, and add an "active" class to the button that opened the tab
-	document.getElementById(tabName).style.display = "block";
-	evt.currentTarget.className += " active";
-
 }
 
 
@@ -51,26 +40,30 @@ function populateListProductChoices(slct2) {
 		s2.removeChild(s2.childNodes[0]);
 	}
 	
-	// for each item in the array, create a checkbox element, each containing information such as:
-	// <input type="checkbox" name="product" value="Bread">
-	// <label for="Bread">Bread/label><br>
 
 	for (i = 0; i < optionArray.length; i++) {
 			
 		var productName = optionArray[i][0];
 		var productPrice = optionArray[i][1];
 		// create the checkbox and add in HTML DOM
-		var checkbox = document.createElement("input");
-		checkbox.type = "checkbox";
-		checkbox.name = "product";
-		checkbox.value = productName;
-		s2.appendChild(checkbox);
 		
 		// create a label for the checkbox, and also add in HTML DOM
-		var label = document.createElement('label')
+		var label = document.createElement('label');
 		label.htmlFor = productName;
 		label.appendChild(document.createTextNode(productName +": $"+productPrice));
 		s2.appendChild(label);
+		
+		var view = document.createElement('image');
+		view.source = "../images/"+productName+".jpg";
+		s2.appendChild(view);
+		// Uses a number text input to allow users to select how many of each product they want
+		var numberBox = document.createElement("input");
+		numberBox.type = "number";
+		numberBox.name = "product";
+		numberBox.id = productName;
+		s2.appendChild(numberBox);
+		
+
 		
 		// create a breakline node and add in HTML DOM
 		s2.appendChild(document.createElement("br"));    
@@ -94,16 +87,17 @@ function selectedItems(){
 	para.innerHTML = "You selected : ";
 	para.appendChild(document.createElement("br"));
 	for (i = 0; i < ele.length; i++) { 
-		if (ele[i].checked) {
-			para.appendChild(document.createTextNode(ele[i].value));
+		if (ele[i].value > 0) { // only show the objects for which the user entered a value 
+			console.log(ele[i]);
+			para.appendChild(document.createTextNode(ele[i].value +" "+ele[i].id));
 			para.appendChild(document.createElement("br"));
-			chosenProducts.push(ele[i].value);
+			chosenProducts.push([ele[i].id,ele[i].value]);
 		}
 	}
 		
 	// add paragraph and total price
 	c.appendChild(para);
-	c.appendChild(document.createTextNode("Total Price is " + getTotalPrice(chosenProducts)));
+	c.appendChild(document.createTextNode("Total Price is $" + getTotalPrice(chosenProducts)));
 		
 }
 
