@@ -53,8 +53,8 @@ function populateListProductChoices(slct2) {
 		label.appendChild(document.createTextNode(productName +": $"+productPrice));
 		s2.appendChild(label);
 		
-		var view = document.createElement('image');
-		view.source = "../images/"+productName+".jpg";
+		var view = document.createElement('img');
+		view.src = "../images/"+productName+".jpg";
 		s2.appendChild(view);
 		// Uses a number text input to allow users to select how many of each product they want
 		var numberBox = document.createElement("input");
