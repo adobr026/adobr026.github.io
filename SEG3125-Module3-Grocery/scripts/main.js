@@ -47,15 +47,20 @@ function populateListProductChoices(slct2) {
 		var productPrice = optionArray[i][1];
 		// create the checkbox and add in HTML DOM
 		
+		var view = document.createElement('img');
+		view.src = "images/"+productName+".jpg";
+		view.width = 100;
+		view.height = 100;
+		s2.appendChild(view);
+		
 		// create a label for the checkbox, and also add in HTML DOM
 		var label = document.createElement('label');
 		label.htmlFor = productName;
 		label.appendChild(document.createTextNode(productName +": $"+productPrice));
 		s2.appendChild(label);
 		
-		var view = document.createElement('img');
-		view.src = "../images/"+productName+".jpg";
-		s2.appendChild(view);
+
+		
 		// Uses a number text input to allow users to select how many of each product they want
 		var numberBox = document.createElement("input");
 		numberBox.type = "number";
@@ -88,7 +93,14 @@ function selectedItems(){
 	para.appendChild(document.createElement("br"));
 	for (i = 0; i < ele.length; i++) { 
 		if (ele[i].value > 0) { // only show the objects for which the user entered a value 
-			console.log(ele[i]);
+		
+		// Adding image to cart
+			var view = document.createElement('img'); 
+			view.src = "images/"+ele[i].id+".jpg";
+			view.width = 100;
+			view.height = 100;
+			para.appendChild(view);
+			
 			para.appendChild(document.createTextNode(ele[i].value +" "+ele[i].id));
 			para.appendChild(document.createElement("br"));
 			chosenProducts.push([ele[i].id,ele[i].value]);
