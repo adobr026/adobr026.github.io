@@ -4,9 +4,12 @@
 */
 
 /* Bootstrap default font-family is Helvetica Neue */
-h1 {
-  font-family: "Times New Roman", Times, serif;
-  text-shadow: 3px 3px 1px black;
-  
+.jumbotron-fluid {
+	background-color:#006600;
 }
+
+.card-header {
+	background-color:#006600;
+}
+
 
