@@ -11,7 +11,7 @@ function validatePhone(txtPhone) {
     var a = document.getElementById(txtPhone).value;
     // This filter asks for something like (12345), so parentheses with any number (at least 1)
     // of digits
-    var filter = /^(\([-+]?[0-9]+)\)$/;
+    var filter = /^(\(\d\d\d)\)\s\d\d\d-\d\d\d\d$/;
     if (filter.test(a)) {
         return true;
     }
@@ -19,6 +19,19 @@ function validatePhone(txtPhone) {
         return false;
     }
 }
+
+function validateCreditCard(ccId) {
+	let value = document.getElementById(ccId).value;
+	
+	let filter = /^\d\d\d\d\s\d\d\d\d\s\d\d\d\d\s\d\d\d\d$/;
+	
+	if (filter.test(value) || value == "") { // Returns true if user input matches requirements or if its left blank (assuming user will go back to it)
+		return true;
+	}else{
+		return false;
+	}
+}
+
 
 
 // Using date restrictions on datepicker
@@ -30,8 +43,19 @@ const setDateFormat = "mm/dd/yy";
 
 function disableDates(date) {
     // Sunday is Day 0, disable all Sundays
-    if (date.getDay() == 0)
-        return [false];
+	let professional = document.getElementById("mechanic").value;
+	if (professional == "Erwind"){
+	    if (date.getDay() == 0 || date.getDay() == 6 || date.getDay() == 5){
+			return [false];
+		}
+	}
+	
+	if (professional == "Irwin"){
+	    if (date.getDay() == 0 || date.getDay() == 2 || date.getDay() == 3){
+			return [false];
+		}
+	}
+
     var string = jQuery.datepicker.formatDate(setDateFormat, date);
     return [ unavailableDates.indexOf(string) == -1 ]
 }
@@ -47,13 +71,24 @@ $(document).ready(function(){
     $("#phone").on("change", function(){
         if (!validatePhone("phone")){
             alert("Wrong format for phone");
-            $("#phone").val("(xxxx)");
+            $("#phone").val("(xxx) xxx-xxxx");
             $("#phone").addClass("error");
         }
         else {
             $("#phone").removeClass("error");
         }
     });
+	
+	$("#pay").on("change",function(){
+        if (!validateCreditCard("pay")){
+            alert("Please enter a valid Credit Card Number");
+            $("#pay").val("xxxx xxxx xxxx xxxx");
+            $("#pay").addClass("error");
+        }
+        else {
+            $("#pay").removeClass("error");
+        }		
+	});
 
     // To change the style of the calender, look in jqueryui.com, under Themes, in the ThemeRoller Gallery 
     // You can try different themes (the names are under the calendars) / This is Excite Bike 
@@ -78,14 +113,53 @@ $(document).ready(function(){
     // Look at the different events on which an action can be performed
     // https://www.w3schools.com/jquery/jquery_events.asp
     // Here, we put 
-    $("#debit").on("mouseenter", function(){
-        $("#debit").addClass("showInput");
+    $("#service_options").on("mouseenter", function(){
+        $("#service_options").addClass("showInput");
     });
 
-    $("#debit").on("mouseleave", function(){
-        $("#debit").removeClass("showInput");
+    $("#service_options").on("mouseleave", function(){
+        $("#service_options").removeClass("showInput");
     });
-  
+	
+    $("#mechanic").on("mouseenter", function(){
+        $("#mechanic").addClass("showInput");
+    });
+
+    $("#mechanic").on("mouseleave", function(){
+        $("#mechanic").removeClass("showInput");
+    });
+	
+    $("#pay").on("mouseenter", function(){
+        $("#pay").addClass("showInput");
+    });
+
+    $("#pay").on("mouseleave", function(){
+        $("#pay").removeClass("showInput");
+    });
+	
+	$("#name").on("mouseenter", function(){
+        $("#name").addClass("showInput");
+    });
+
+    $("#name").on("mouseleave", function(){
+        $("#name").removeClass("showInput");
+    });
+	
+    $("#email").on("mouseenter", function(){
+        $("#email").addClass("showInput");
+    });
+
+    $("#email").on("mouseleave", function(){
+        $("#email").removeClass("showInput");
+    });
+	
+    $("#phone").on("mouseenter", function(){
+        $("#phone").addClass("showInput");
+    });
+
+    $("#phone").on("mouseleave", function(){
+        $("#phone").removeClass("showInput");
+    });	
     // https://jqueryui.com/tooltip/ 
     // The class "highlight" used here is predefined in JQuery UI
     // the message of the tooltip is encoded in the input (in the HTML file)
