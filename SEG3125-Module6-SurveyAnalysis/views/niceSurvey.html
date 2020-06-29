@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Questionnaire</title>
+    <title> Long & Mcquade Questionnaire</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Style sheet (CSS) and JavaScript scripts necessary to use Bootstrap -->
@@ -8,39 +8,126 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>    
-
+    <!-- Your own additional style sheet -->
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
     <!-- <script src="https://code.jquery.com/jquery-1.12.4.js"></script> -->
   </head>
   
   <body>
-	
-	<div class="container-md p-3 my-3 border bg-dark text-white" id="survey">
-    <h1>Survey</h1>
-    <form>
-      <h2> What fruits(s) do you like? </h2>
-      I like:<br>
-      <input type="text" name="fruit" placeholder="fruit name..." required />
-      <br>
-      <br>
-      <h2> What color(s) do you like? </h2>
-	    I like:<br>
-		  <input type="checkbox" name="color" value="Red"> Red<br>
-		  <input type="checkbox" name="color" value="Green"> Green<br>
-      <input type="checkbox" name="color" value="Blue"> Blue<br>
-      <br>
-      <h2>What is your favorite animal?</h2>
-      I like:<br>
-      <select name="animal">
-			  <option value="Cat" selected="selected">Cat</option>
-			  <option value="Dog">Dog</option>
-			  <option value="Turtle">Turtle</option>
-      </select>
-      <br>
-      <br>
-      <button type="submit" class="btn btn-warning" id="bb">Submit</button>
-      <p id="thanks"></p>
-    </form>
+    <div class="jumbotron jumbotron-fluid">
+      <div class="container text-white">
+        <h1>Long & McQuade Website Questionnaire</h1>  
+      </div>
     </div>
-	<script src="/assets/action.js"></script>
+    <div class="container text-center">
+      <h3>Please click <a href="https://www.long-mcquade.com/">here</a> to access the site.</h3>	
+      <a href="https://www.long-mcquade.com/">
+        <img src="/images/LongAndMcQuade_Front_Page.PNG" alt="https://www.long-mcquade.com/" width="900" height="440">
+      </a>
+    </div>
+    <br>
+    <br>
+    <form>
+      <div class="card">
+        <div class="card-header">
+          <h2>What are your first impressions of the site?</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group text-white">
+            <input type="text" class="form-control" name="impression" placeholder="Good/Bad/Great..." required />
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Have you used this site before?</h2>
+        </div>
+        <div class="card-body">
+          <div class="radio">
+            <label><input type="radio" name="optRadio" value="Yes"> Yes</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="optRadio" value="No"> No</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>How do you feel about the color scheme used by the site</h2>       
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <select class="form-control" name="colors">
+              <option value="Love it" selected="selected">Love It</option>
+              <option value="Like it">Like it</option>
+              <option value="Indifferent">Indifferent</option>
+              <option value="Dislike it">Dislike it</option>
+              <option value="Hate it">Hate it</option>
+            </select>
+          </div>
+        </div>
+      </div>      
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Which music brand(s) are you familiar with?</h2>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <div class="form-check">
+              <input type="checkbox" class="form-check-input" name="brand" value="Fender" id="fender">
+              <label class="form-check-label" for="fender">Fender</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Gibson" id="gibson">
+              <label class="form-check-label" for="gibson">Gibson</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Ibanez" id="ibanez">
+              <label class="form-check-label" for="ibanez">Ibanez</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Jackson" id="jackson">
+              <label class="form-check-label" for="jackson">Jackson</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Schecter" id="schecter">
+              <label class="form-check-label" for="schecter">Schecter</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="PRS" id="prs">
+              <label class="form-check-label" for="prs">PRS</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Tama" id="tama">
+              <label class="form-check-label" for="tama">Tama</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Sabian" id="sabian">
+              <label class="form-check-label" for="sabian">Sabian</label><br>
+              <input type="checkbox" class="form-check-input" name="brand" value="Zildjian" id="zildjian">
+              <label class="form-check-label" for="zildjian">Zildjian</label><br>
+            </div>
+          </div>
+        </div>
+     </div>
+
+     <div class="card">
+        <div class="card-header">
+          <h2>How do you feel about the following statement: This site is very easy to navigate.</h2>       
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <select class="form-control" name="navigate">
+              <option value="Strongly Agree">Strongly Agree</option>
+              <option value="Somewhat Agree">Somewhat Agree</option>
+              <option value="Neither" selected="selected">Neither agree nor disagree</option>
+              <option value="Somewhat Disagree">Somewhat Disagree</option>
+              <option value="Strongly Disagree">Strongly Disagree</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h2>Is there anything else you want to say about the site?</h2>
+        </div>
+        <div class="card-body">
+          <textarea class="form-control" placeholder="Opinions of site ..." name="txtArea"></textarea>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-dark" id="bb">Submit</button>
+    </form>
+    <script src="/assets/action.js"></script>
   </body>
 </html> 

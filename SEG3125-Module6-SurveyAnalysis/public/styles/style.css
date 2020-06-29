@@ -1,0 +1,22 @@
+
+.jumbotron-fluid{
+	background-color:#c06e23;
+}
+
+.card-header {
+	background-color:#c06e23;
+	color: white;
+}
+
+.form-check-label {
+	font-weight: bold;
+}
+.radio {
+	font-weight: bold;
+}
+
+a {
+	color:orangered;
+}
+
+

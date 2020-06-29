@@ -5,23 +5,45 @@
 
 <body>
     <h1>Survey analysis</h1>
-    <h2>Colors</h2>
+    <h2>First Impression of Site:</h2>
     <ul>
     <% for (var i=0; i<results[0].length; i++){ %>
-        <li><%= results[0][i].color %> :  <%= results[0][i].count %></li>
+        <li><%= results[0][i].impression %> :  <%= results[0][i].count %></li>
     <% } %>    
     </ul>
-    <h2>Fruits</h2>
+    <h2>Is this first time on the site</h2>
     <ul>
     <% for (var i=0; i<results[1].length; i++){ %>
-        <li><%= results[1][i].fruit %> :  <%= results[1][i].count %></li>
+        <li><%= results[1][i].optRadio %> :  <%= results[1][i].count %></li>
     <% } %>    
     </ul>
-    <h2>Animals</h2>
+    <h2>Thoughts on Color Scheme</h2>
     <ul>
     <% for (var i=0; i<results[2].length; i++){ %>
-        <li><%= results[2][i].animal %> :  <%= results[2][i].count %></li>
+        <li><%= results[2][i].colors %> :  <%= results[2][i].count %></li>
     <% } %>    
     </ul>
+
+    <h2>Brands that are familiar</h2>
+    <ul>
+    <% for (var i=0; i<results[3].length; i++){ %>
+        <li><%= results[3][i].brand %> :  <%= results[3][i].count %></li>
+    <% } %>    
+    </ul>
+
+    <h2>Navigation Ease</h2>
+    <ul>
+    <% for (var i=0; i<results[4].length; i++){ %>
+        <li><%= results[4][i].navigate %> :  <%= results[4][i].count %></li>
+    <% } %>    
+    </ul>
+
+    <h2>Other Opinions</h2>
+    <ul>
+    <% for (var i=0; i<results[5].length; i++){ %>
+        <li><%= results[5][i].txtArea %></li>
+    <% } %>    
+    </ul>
+
 </body>
 </html>
