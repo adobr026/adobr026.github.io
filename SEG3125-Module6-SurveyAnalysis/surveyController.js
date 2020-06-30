@@ -16,7 +16,7 @@ function writeData(info, fileName){
     fs.writeFileSync('./data/' + fileName + '.json', data);
 }
 
-// update the data file, I use "name" to be equal to fruit, or animal or color
+// update the data file, I use "name" to be equal to different file names
 // to match with the file names
 // I assume we always just add 1 to a single item
 function combineCounts(name, value){
@@ -25,6 +25,7 @@ function combineCounts(name, value){
      // will be useful for text entry, since the item typed in might not be in the list
     var found = 0;
     for (var i=0; i<info.length; i++){
+        console.log(info[i][name]);
         if (info[i][name] === value){
             info[i].count = parseInt(info[i].count) + 1;
             found = 1;
@@ -63,12 +64,11 @@ module.exports = function(app){
     // the action.js code will POST, and what is sent in the POST
     // will be recuperated here, parsed and used to update the data files
     app.post('/niceSurvey', urlencodedParser, function(req, res){
-        console.log(req.body);
+        //console.log(req.body);
         var json = req.body;
         for (var key in json){
-            console.log(key + ": " + json[key]);
             // in the case of checkboxes, the user might check more than one
-            if ((key === "brand") && (json[key].length === 2)){
+            if ((key === "brand") && (json[key].length >= 2)){
                 for (var item in json[key]){
                     combineCounts(key, json[key][item]);
                 }
